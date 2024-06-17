@@ -24,6 +24,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
+                 withAWS(credentials: 'lion-user02') {
+                    sh 'aws s3 cp build/libs/apidemo-0.0.1-SNAPSHOT.jar s3://yh6651-build-files2/'
+                 }
                 // deploy steps
             }
         }
